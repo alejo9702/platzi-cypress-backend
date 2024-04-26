@@ -25,6 +25,7 @@ context('Cookies', () => {
 
     cy.get('#getCookies .set-a-cookie').click()
 
+
     // cy.getCookies() yields an array of cookies
     cy.getCookies().should('have.length', 1).should((cookies) => {
       // each cookie has these properties
@@ -76,6 +77,10 @@ context('Cookies', () => {
   it('cy.clearCookie() - clear a browser cookie', () => {
     // https://on.cypress.io/clearcookie
     cy.getCookie('token').should('be.null')
+
+    cy.session("Cookies",()=>{
+
+    })
 
     cy.get('#clearCookie .set-a-cookie').click()
 

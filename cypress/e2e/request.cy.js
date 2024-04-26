@@ -11,7 +11,10 @@ describe('testing requests', function () {
                 lastName: 'restrepo',
                 email: 'mateo0217@gmail.com'
             }
-        }).then(response => {
+        })
+            // .its("status").should("be.equal",201)
+            .then(response => {
+
             console.log(response.body)
             expect(response.status).to.equal(201);
             expect(response.body).to.have.property("id");

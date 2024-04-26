@@ -1,5 +1,5 @@
 describe('testing graphql', () => {
-    it('should query perform a query using gr', () => {
+    it('should perform a query using gr', () => {
 
         const gqlQuery = `query pokemons($limit: Int, $offset: Int) {
   pokemons(limit: $limit, offset: $offset) {
@@ -30,7 +30,9 @@ describe('testing graphql', () => {
             }
 
         }).then(response => {
+            cy.log("response:" + response.body.data)
             expect(response.body.data.pokemons.results[0].name).to.eq("bulbasaur");
+            expect(response.body.data.pokemons.next).contains("https://pokeapi.co/api/v2/pokemon/")
         })
     })
 })

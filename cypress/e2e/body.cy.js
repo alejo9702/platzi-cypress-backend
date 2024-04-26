@@ -1,5 +1,5 @@
 describe('Testing body', () => {
-    it('test the body', () => {
+    it('testing the body', () => {
 
       cy.request('employees/1')
           .its('body')
