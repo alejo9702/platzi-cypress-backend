@@ -9,7 +9,7 @@ module.exports = defineConfig({
 
     e2e: {
         baseUrl: 'https://pokedexpokemon.netlify.app',
-        retries: 5,
+        // retries: 5,
         setupNodeEvents(on, config) {
             const client = new MongoClient(config.env.MONGO);
 
@@ -94,7 +94,7 @@ module.exports = defineConfig({
 
                             const filter = {_id: new ObjectId(id)};
 
-                            const updateOperation= {
+                            const updateOperation = {
                                 $set: updatedData
                             }
                             return await employees.updateOne(filter, updateOperation);
