@@ -20,7 +20,7 @@ export class LoginPage {
 
     login(email, password) {
         cy.get(this.userInput).type(email)
-        cy.get(this.passwordInput).type(password)
+        cy.get(this.passwordInput).type(password, {sensitive: true})
         cy.get(this.loginButton).click()
     }
 

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "run:server": "json-server --watch db.json",
-    "cypress_open": "cypress open"
+    "cypress_open": "cypress open",
+    "varible:env": "cypress open --env VARIABLE_DE_ENTORNO=valor"
   },
   "keywords": [],
   "author": "",

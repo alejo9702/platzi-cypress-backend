@@ -114,6 +114,10 @@ module.exports = defineConfig({
     },
 
     env: {
+        credentials: {
+            user: "username",
+            password: "password"
+        },
         DB_HOST: "localhost",
         DB_USER: "root",
         DB_PASSWORD: "Obejo970217$",
