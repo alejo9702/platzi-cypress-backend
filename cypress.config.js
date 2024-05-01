@@ -7,6 +7,7 @@ const {tr} = require("@faker-js/faker");
 module.exports = defineConfig({
     video: true,
 
+
     e2e: {
         baseUrl: 'https://pokedexpokemon.netlify.app',
         // retries: 5,
