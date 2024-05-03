@@ -25,7 +25,7 @@ describe('login', () => {
         cy.log(Cypress.env("credentials").user)
     });
 
-    it.only('failed login from terminal', () => {
+    it('failed login from terminal', () => {
         cy.log(Cypress.env());
         loginPage.login(
             Cypress.env("credentials").user,
@@ -34,3 +34,32 @@ describe('login', () => {
         cy.log(Cypress.env("credentials").user)
     });
 });
+
+
+describe.only(
+    'failed login with config',
+    {
+        env: {
+            failedUser: "error1",
+            failedPassword: "error2"
+        },
+    },
+    function () {
+
+        beforeEach(() => {
+            loginPage.visit();
+        })
+
+        it('failed login', () => {
+            loginPage.validatePageLogin();
+            loginPage.login(
+                Cypress.env("failedUser"),
+                Cypress.env("failedPassword")
+            )
+            loginPage.validateErrorLogin()
+
+            cy.log(Cypress.env())
+
+        });
+    }
+);

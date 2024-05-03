@@ -14,6 +14,8 @@ module.exports = defineConfig({
         setupNodeEvents(on, config) {
             const client = new MongoClient(config.env.MONGO);
 
+
+
             on('task',
                 {
                     queryDatabase(query) {
@@ -109,6 +111,9 @@ module.exports = defineConfig({
 
 
                 });
+
+            config.env.vairiable = process.env.NODE_ENV ?? 'THERE IS NOT VARIABLE';
+            return config
         },
         //baseUrl: 'http://localhost:3000/',
     },
