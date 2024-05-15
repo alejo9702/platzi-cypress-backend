@@ -1,4 +1,5 @@
 import {loginPage} from "../pageObjects/LogingPage";
+import {addMatchImageSnapshotCommand} from "@simonsmith/cypress-image-snapshot/command";
 
 Cypress.Commands.add("login", (email, password) => {
     const userInput = "#user_login";
@@ -33,3 +34,12 @@ Cypress.Commands.overwrite('type', (originalFn, element, text, options) => {
 
     return originalFn(element, text, options);
 })
+
+addMatchImageSnapshotCommand({
+    failureThreshold: 0.03,
+    failureThresholdType: "percent",
+    customDiffConfig: {threshold:0.1},
+    capture: "viewport"
+})
+
+
