@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:update:snapshot": "cypress open --env updateSnapshots=true",
     "run:server": "json-server --watch db.json",
     "cypress_open": "cypress open",
     "varible:env": "cypress open --env VARIABLE_DE_ENTORNO=valor",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
     "cypress": "^13.8.1",
+    "cypress-image-snapshot": "^4.0.1",
     "json-server": "^0.17.3",
     "prettier": "^3.0.0"
   },

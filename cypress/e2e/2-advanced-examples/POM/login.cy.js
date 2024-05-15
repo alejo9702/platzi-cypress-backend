@@ -36,7 +36,7 @@ describe('login', () => {
 });
 
 
-describe.only(
+describe(
     'failed login with config',
     {
         env: {
@@ -61,5 +61,64 @@ describe.only(
             cy.log(Cypress.env())
 
         });
+    }
+);
+
+describe('login failed with fixtures', () => {
+
+    beforeEach(() => {
+        loginPage.visit();
+    });
+    it('login failed ', () => {
+        loginPage.validatePageLogin();
+        cy.fixture("credentials").then(credentials => {
+            loginPage.login(credentials.email, credentials.password)
+        })
+
+        loginPage.validateErrorLogin();
+    });
+
+    it('login success ', () => {
+        loginPage.validatePageLogin();
+        cy.fixture("users").then(credentials => {
+            loginPage.login(credentials.email, credentials.password)
+        })
+
+        loginPage.validateSuccessLogin();
+    });
+})
+
+
+//usando dos fixtures
+const credentialsForUsers = [
+    {
+        nombre: "credentials",
+        titulo: "Login with credentials",
+    },
+    {
+        nombre: "users",
+        titulo: "Login with users",
+    }
+]
+
+credentialsForUsers.forEach(credentials => {
+        describe.only(credentials.titulo, () => {
+                beforeEach(() => {
+                        loginPage.visit();
+                    }
+                );
+
+                it('login exitoso con fixtures', () => {
+                        loginPage.validatePageLogin();
+
+                        cy.fixture(credentials.nombre).then(credentials => {
+                                loginPage.login(credentials.email, credentials.password);
+                            }
+                        );
+                        loginPage.validateErrorLogin();
+                    }
+                );
+            }
+        );
     }
 );

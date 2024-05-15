@@ -2,7 +2,11 @@ const {defineConfig} = require("cypress");
 const mysql = require('mysql');
 const {MongoClient, ObjectId} = require("mongodb");
 const {tr} = require("@faker-js/faker");
+const {
+    addMatchImageSnapshotPlugin,
+} = require('cypress-image-snapshot/plugin');
 
+const values = {}
 
 module.exports = defineConfig({
     video: true,
@@ -10,10 +14,26 @@ module.exports = defineConfig({
 
     e2e: {
         baseUrl: 'https://pokedexpokemon.netlify.app',
-        // retries: 5,
+        //retries: 3,
         setupNodeEvents(on, config) {
             const client = new MongoClient(config.env.MONGO);
+            addMatchImageSnapshotPlugin(on, config)
 
+            on("task",
+                {
+                    saveValue(value) {
+                        const key = Object.keys(value)[0]
+                        values[key] = value[key]
+
+                        return null;
+
+                    },
+                    getValue(key) {
+                        console.log('values', values)
+                        return values[key] ?? 'there is no value'
+                    }
+                }
+            )
 
 
             on('task',
