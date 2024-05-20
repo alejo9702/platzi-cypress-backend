@@ -13,7 +13,9 @@
     "delete:results": "rm -r cypress/results/* || true",
     "report": "cypress run --spec 'cypress/e2e/2-advanced-examples/POM/login.cy.js' --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json",
     "mochawesome:report": "npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > mochawesome.json && npx marge mochawesome.json",
-    "junit:reports": "jrm cypress/results/junit/combined-report.xml \"cypress/results/junit/*.xml\""
+    "junit:reports": "jrm cypress/results/junit/combined-report.xml \"cypress/results/junit/*.xml\"",
+    "allure:report": "npx cypress run --spec 'cypress/e2e/2-advanced-examples/POM/login.cy.js' --env allure=true",
+    "allure:serve": "allure serve allure-results"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +27,7 @@
     "prettier": "^3.0.0"
   },
   "dependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.2",
     "cypress-multi-reporters": "^1.6.4",
     "cypress-xpath": "^2.0.1",
     "junit-report-merger": "^7.0.0",
