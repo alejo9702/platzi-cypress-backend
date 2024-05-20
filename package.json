@@ -9,7 +9,8 @@
     "run:server": "json-server --watch db.json",
     "cypress_open": "cypress open",
     "varible:env": "cypress open --env VARIABLE_DE_ENTORNO=valor",
-    "varible:env:system": "export NODE_ENV=DEV && cypress open"
+    "varible:env:system": "export NODE_ENV=DEV && cypress open",
+    "cucumber:tags": "cypress run --env tags=@test"
   },
   "keywords": [],
   "author": "",
