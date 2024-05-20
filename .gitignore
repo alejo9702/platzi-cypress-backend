@@ -2,3 +2,9 @@
 node_modules
 
 /cypress/snapshots
+/cypress/results
+/mochawesome-report
+mochawesome.json
+cypress/videos
+cypress/screenshots
+package-lock.json
