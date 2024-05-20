@@ -2,22 +2,25 @@ const {defineConfig} = require("cypress");
 const mysql = require('mysql');
 const {MongoClient, ObjectId} = require("mongodb");
 const {tr} = require("@faker-js/faker");
-const {
-    addMatchImageSnapshotPlugin,
-} = require('cypress-image-snapshot/plugin');
+// const {
+//     addMatchImageSnapshotPlugin,
+// } = require('cypress-image-snapshot/plugin');
 
 const values = {}
 
 module.exports = defineConfig({
     video: true,
 
-
+    reporter: "cypress-multi-reporters",
+    reporterOptions: {
+        configFile: "reporter-config.json",
+    },
     e2e: {
         baseUrl: 'https://pokedexpokemon.netlify.app',
         //retries: 3,
         setupNodeEvents(on, config) {
             const client = new MongoClient(config.env.MONGO);
-            addMatchImageSnapshotPlugin(on, config)
+            // addMatchImageSnapshotPlugin(on, config)
 
             on("task",
                 {
@@ -136,19 +139,21 @@ module.exports = defineConfig({
             return config
         },
         //baseUrl: 'http://localhost:3000/',
+
+        env: {
+            credentials: {
+                user: "username",
+                password: "password"
+            },
+            DB_HOST: "localhost",
+            DB_USER: "root",
+            DB_PASSWORD: "Obejo970217$",
+            DB_NAME: "test_cypress",
+            MONGO: "mongodb://localhost:27017"
+        }
+
     },
 
-    env: {
-        credentials: {
-            user: "username",
-            password: "password"
-        },
-        DB_HOST: "localhost",
-        DB_USER: "root",
-        DB_PASSWORD: "Obejo970217$",
-        DB_NAME: "test_cypress",
-        MONGO: "mongodb://localhost:27017"
-    }
 });
 
 

@@ -1,6 +1,6 @@
 import {loginPage} from "../../../pageObjects/LogingPage";
 
-describe('login', () => {
+describe.only('login', () => {
 
     beforeEach(() => {
         loginPage.visit()
