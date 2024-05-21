@@ -96,7 +96,7 @@ const credentialsForUsers = [
         titulo: "Login with credentials",
     },
     {
-        nombre: "users",
+        nombre: "users_2",
         titulo: "Login with users",
     }
 ]
@@ -108,7 +108,7 @@ credentialsForUsers.forEach(credentials => {
                     }
                 );
 
-                it('login exitoso con fixtures', () => {
+                it('login fallido con fixtures', () => {
                         loginPage.validatePageLogin();
 
                         cy.fixture(credentials.nombre).then(credentials => {

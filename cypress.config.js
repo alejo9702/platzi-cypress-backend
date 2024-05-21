@@ -7,7 +7,6 @@ const {tr} = require("@faker-js/faker");
 // } = require('cypress-image-snapshot/plugin');
 const webpackPreprocessor = require("@cypress/webpack-preprocessor");
 const preprocessor = require('@badeball/cypress-cucumber-preprocessor')
-const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 const values = {}
 
 
@@ -146,13 +145,13 @@ async function setupNodeEvents(on, config) {
     };
     on('file:preprocessor', webpackPreprocessor(options));
 
-    allureWriter(on, config);
     return config
 
 }
 
 
 module.exports = defineConfig({
+    projectId: "xg3k4z",
     video: true,
 
     env: {
