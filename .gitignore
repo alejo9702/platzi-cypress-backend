@@ -10,4 +10,5 @@ mochawesome-report
 mochawesome.json
 allure-results
 cypress/results
+dockerReports
 

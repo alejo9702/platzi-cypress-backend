@@ -157,8 +157,6 @@ module.exports = defineConfig({
 
     env: {
         allureReuseAfterSpec: true,
-        allureResultsPath: "someFolder/results",
-
         credentials: {
             user: "username",
             password: "password"
