@@ -1,10 +1,13 @@
 .idea
 node_modules
+package-lock.json
 
+#reports
 /cypress/snapshots
-
 /cypress/videos
+/cypress/screenshots
 mochawesome-report
 mochawesome.json
+allure-results
+cypress/results
 
-package-lock.json
