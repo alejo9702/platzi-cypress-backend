@@ -12,10 +12,10 @@ const values = {}
 module.exports = defineConfig({
     video: true,
 
-    // reporter: "cypress-multi-reporters",
-    // reporterOptions: {
-    //     configFile: "reporter-config.json",
-    // },
+    reporter: "cypress-multi-reporters",
+    reporterOptions: {
+        configFile: "reporter-config.json",
+    },
     e2e: {
         baseUrl: 'https://pokedexpokemon.netlify.app',
         //retries: 3,
