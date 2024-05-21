@@ -10,7 +10,11 @@
     "cypress_open": "cypress open",
     "varible:env": "cypress open --env VARIABLE_DE_ENTORNO=valor",
     "varible:env:system": "export NODE_ENV=DEV && cypress open",
-    "cucumber:tags": "cypress run --env tags=@test"
+    "cucumber:tags": "cypress run --env tags=@test",
+    "allure:report": "npx cypress run --env allure=true",
+    "allure:repo": "allure generate allure-results --clean -o allure-report",
+    "allure:serve": "allure serve allure-results",
+    "allure:serve:docker": "allure serve dockerReports"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +28,7 @@
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
     "@cypress/webpack-preprocessor": "^6.0.1",
+    "@shelex/cypress-allure-plugin": "^2.40.2",
     "cypress-xpath": "^2.0.1",
     "mongo": "^0.1.0",
     "mongodb": "^6.5.0",

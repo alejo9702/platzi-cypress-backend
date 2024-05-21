@@ -4,3 +4,7 @@ node_modules
 /cypress/snapshots
 
 /cypress/videos
+mochawesome-report
+mochawesome.json
+
+package-lock.json

@@ -7,11 +7,12 @@ const {tr} = require("@faker-js/faker");
 // } = require('cypress-image-snapshot/plugin');
 const webpackPreprocessor = require("@cypress/webpack-preprocessor");
 const preprocessor = require('@badeball/cypress-cucumber-preprocessor')
-
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 const values = {}
 
 
 async function setupNodeEvents(on, config) {
+
     const client = new MongoClient(config.env.MONGO);
     // addMatchImageSnapshotPlugin(on, config)
 
@@ -145,6 +146,7 @@ async function setupNodeEvents(on, config) {
     };
     on('file:preprocessor', webpackPreprocessor(options));
 
+    allureWriter(on, config);
     return config
 
 }
@@ -153,26 +155,29 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
     video: true,
 
+    env: {
+        allureReuseAfterSpec: true,
+        allureResultsPath: "someFolder/results",
+
+        credentials: {
+            user: "username",
+            password: "password"
+        },
+        DB_HOST: "localhost",
+        DB_USER: "root",
+        DB_PASSWORD: "Obejo970217$",
+        DB_NAME: "test_cypress",
+        MONGO: "mongodb://localhost:27017"
+    },
 
     e2e: {
         //retries: 3,
         //baseUrl: 'http://localhost:3000/',
         baseUrl: 'https://pokedexpokemon.netlify.app',
-
+        specPattern: "**/*.feature",
         setupNodeEvents,
-        env: {
-            credentials: {
-                user: "username",
-                password: "password"
-            },
-            DB_HOST: "localhost",
-            DB_USER: "root",
-            DB_PASSWORD: "Obejo970217$",
-            DB_NAME: "test_cypress",
-            MONGO: "mongodb://localhost:27017"
-        },
-        specPattern: "**/*.feature"
-    },
+
+    }
 });
 
 
