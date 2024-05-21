@@ -10,6 +10,7 @@ const allureWriter = require("@shelex/cypress-allure-plugin/writer");
 const values = {}
 
 module.exports = defineConfig({
+    projectId: "xg3k4z",
     video: true,
 
     reporter: "cypress-multi-reporters",

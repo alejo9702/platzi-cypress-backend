@@ -15,7 +15,8 @@
     "mochawesome:report": "npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > mochawesome.json && npx marge mochawesome.json",
     "junit:reports": "jrm cypress/results/junit/combined-report.xml \"cypress/results/junit/*.xml\"",
     "allure:report": "npx cypress run --spec 'cypress/e2e/2-advanced-examples/POM/login.cy.js' --env allure=true",
-    "allure:serve": "allure serve allure-results"
+    "allure:serve": "allure serve allure-results",
+    "cypress:dashboard": "cypress run --spec 'cypress/e2e/2-advanced-examples/POM/login.cy.js' --record --key eb3edd41-38e7-447a-9e09-4f73ad23c8e9"
   },
   "keywords": [],
   "author": "",
