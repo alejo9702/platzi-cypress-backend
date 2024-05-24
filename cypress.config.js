@@ -1,4 +1,5 @@
 const {defineConfig} = require("cypress");
+const { cloudPlugin } = require("cypress-cloud/plugin");
 const mysql = require('mysql');
 const {MongoClient, ObjectId} = require("mongodb");
 const {tr} = require("@faker-js/faker");
@@ -140,7 +141,7 @@ module.exports = defineConfig({
             config.env.vairiable = process.env.NODE_ENV ?? 'THERE IS NOT VARIABLE';
 
             allureWriter(on, config);
-            return config
+            return config, cloudPlugin(on, config)
         },
         //baseUrl: 'http://localhost:3000/',
 

@@ -11,3 +11,4 @@ mochawesome.json
 cypress/videos
 cypress/screenshots
 /allure-results
+data
