@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cypress run --spec 'cypress/e2e/2-advanced-examples/POM/login.cy.js'",
     "test:update:snapshot": "cypress open --env updateSnapshots=true",
     "run:server": "json-server --watch db.json",
     "cypress_open": "cypress open",
